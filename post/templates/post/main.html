@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Main Page</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+
+<ul class="thumbnails">
+		<div class="well inline-headers">
+		{% if username %}
+				<h4>Hello, {{username}}!</h4>
+				<h5><a href="/logout/">Logout</a></h5>
+		{% else %}
+			<h5><a href="/login/">Login</a></h5>
+			<h5><a href="/signup/">Register</a></h5>
+		{% endif %}
+		</div>
+		{% if username %}
+		<div class="well inline-headers">
+				<h5><a href="/post_image_page/">Post image</a></h5>
+		</div>
+		{% endif %}
+		<hr>
+		<h1>LIST OF POSTS</h1>
+		<hr>
+		{% for post in list_of_posts %}
+			<li class='span3'>
+				<figure>
+            		<!-- <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3f/Oxalis_tetraphylla_flower.jpg/640px-Oxalis_tetraphylla_flower.jpg" width='300px' height="200px" alt="3 column placeholder" /> -->
+                	<h3>{{ post.post_title }}</h3>
+            		<img src={% static post.post_image %} width='300px' height="200px" alt="3 column placeholder" />
+            		<figcaption>
+            			<!-- {% if username %}
+							<h4><a href="/addlike/{{ post.id }}/">Like{% if post.id in user_like_list %} <img src='https://openclipart.org/image/2400px/svg_to_png/145537/Simple-Red-Heart.png' width='15px' height="15px" /> {% else %} <img src='https://img2.embroiderydesigns.com/StockDesign/XLarge/Grand_Slam_Designs/love27.jpg' width='15px' height="15px" /> {% endif %} </a>{{ post.post_likes }}</h4>
+						{% else %}
+							<h4>Likes: {{ post.post_likes }}</h4>
+						{% endif %} -->
+                		<h3>{{ post.post_description }}</h3>
+                		<h3>{{ post.post_date }}</h3>
+                		<h4>Published by: {{ username }}</h4>
+            		</figcaption>
+        		</figure>
+			</li><br>
+			<hr>
+		{% endfor %}
+		<div margin-left='100px'>
+		        <div class="row">
+		            <ul class="pagination">
+		                {% if list_of_posts.has_previous %}
+		                    <li class="arrow"><a href="/{{ list_of_posts.previous_page_number }}/">&laquo;</a></li>
+		                {% else %}
+		                    <li class="arrow unavailable"><a href="">&laquo;</a></li>
+		                {% endif %}
+		                {% for page in list_of_posts.paginator.page_range %}
+		                    {% if page == list_of_posts.number %}
+		                        <li class="current"><a href="/{{ page }}/">{{ page }}</a></li>
+		                    {% else %}
+		                        <li><a href="/{{ page }}/">{{ page }}</a></li>
+		                    {% endif %}
+		                {% endfor %}
+		                {% if list_of_posts.has_next %}
+		                    <li class="arrow"><a href="/{{ list_of_posts.next_page_number }}/">&raquo;</a></li>
+		                {% else %}
+		                    <li class="arrow unavailable"><a href="">&raquo;</a></li>
+		                {% endif %}
+		            </ul>
+		        </div>
+    		</div>
+</ul>
+
+</body>
+</html>

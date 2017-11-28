@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Post_page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+    <div class="thumbnails">
+        <div class="well inline-headers">
+            <form action="/login/" method="post">
+                {% csrf_token %}
+                <label for="username">User name</label>
+                <input type="text" name="username" id="username">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password">
+                {% if login_error %}
+                    <label class="error">{{ login_error }}</label>
+                {% endif %}
+                <input class="button" type="submit" value="Submit">
+            <div><a href="/signup/">Register</a></div>
+            </form>
+        </div>
+    </div>
+</html>

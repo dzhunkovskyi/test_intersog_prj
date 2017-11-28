@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Post_page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+  <div class="thumbnails">
+    <div class="well inline-headers">
+      <h2>Sign up</h2>
+      <form method="post">
+        {% csrf_token %}
+          {% for field in form %}
+          <p>
+            {{ field.label_tag }}<br>
+            {{ field }}
+            {% if field.help_text %}
+              <small style="display: none">{{ field.help_text }}</small>
+            {% endif %}
+            {% for error in field.errors %}
+              <p style="color: red">{{ error }}</p>
+            {% endfor %}
+          </p>
+          {% endfor %}
+
+        <button type="submit">Sign up</button>
+      </form>
+    </div>
+  </div>
+</html>
