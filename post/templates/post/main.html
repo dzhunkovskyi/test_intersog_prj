@@ -20,6 +20,7 @@
 		{% if username %}
 		<div class="well inline-headers">
 				<h5><a href="/post_image_page/">Post image</a></h5>
+				<h5><a href="/post_inst_image_page/">Post Instagram image</a></h5>
 		</div>
 		{% endif %}
 		<hr>
@@ -37,7 +38,7 @@
 						{% else %}
 							<h4>Likes: {{ post.post_likes }}</h4>
 						{% endif %} -->
-                		<h3>{{ post.post_description }}</h3>
+                		<h3>{{ post.post_description|safe }}</h3>
                 		<h3>{{ post.post_date }}</h3>
                 		<h4>Published by: {{ username }}</h4>
             		</figcaption>

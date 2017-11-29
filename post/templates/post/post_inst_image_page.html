@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Post image page</title>
+	<title>Post Instagram image page</title>
 </head>
 <body>
 	{{ form.errors }}
@@ -11,6 +11,7 @@
       <h2>Hello,{{ username }} ,you can post image using this form!</h2>
       <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
+          <!-- <h4>Instagram image url:</h4> -->
           {% for field in form %}
           <p>
             {{ field.label_tag }}<br>

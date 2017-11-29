@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+DATETIME_FORMAT = '%b %d, %Y at %H:%M%p' 
+USE_L10N = False
+USE_TZ = False
 
 # Application definition
 
@@ -129,7 +132,7 @@ STATIC_URL = '/static/'
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
     ('static', 'static'),
-    ('static', 'test_prj/static'),
+    ('static', 'test_intersog_prj/static'),
     os.path.join(PROJECT_ROOT, 'static'),
 )
 

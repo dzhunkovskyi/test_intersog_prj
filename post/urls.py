@@ -5,7 +5,9 @@ from . import views
 app_name = 'post'
 
 urlpatterns = [
+    url(r'^(?P<page_number>\d+)/$', views.main, name='main'),
     url(r'^post_image_page/', views.post_image_page, name='post_image_page'),
+    url(r'^post_inst_image_page/', views.post_inst_image_page, name='post_inst_image_page'),
     url(r'^login/', views.login_func, name='login_func'),
     url(r'^logout/', views.logout, name='logout'),
     url(r'^signup/$', views.signup, name='signup'),
